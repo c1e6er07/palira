@@ -1,6 +1,4 @@
 'use client'
-import Image from "next/image"
-import { useTranslations } from "next-intl"
 import ProductCard from "@/components/ProductCard"
 import { products } from "@/data/products"
 import { useEffect, useState } from "react"
@@ -8,7 +6,6 @@ import type { Product } from "@/data/products"
 import HomeBanner from "@/components/HomeBanner"
 
 export default function Home() {
-  const t = useTranslations()
   const [items, setItems] = useState<Product[]>(products)
 
   useEffect(() => {

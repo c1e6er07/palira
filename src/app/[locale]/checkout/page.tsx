@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
 type PixIntent = { intentId: string; method: 'pix'; amount: number; pix: { copyPaste: string; expiresAt: string } }
-type CardIntent = { intentId: string; method: 'card'; amount: number; status: 'authorized' | 'succeeded' }
 
 export default function CheckoutPage() {
   const { items, total, clear } = useCart()
@@ -13,7 +12,6 @@ export default function CheckoutPage() {
   const [method, setMethod] = useState<'pix' | 'card'>('pix')
   const [loading, setLoading] = useState(false)
   const [pix, setPix] = useState<PixIntent | null>(null)
-  const [card, setCard] = useState<CardIntent | null>(null)
   const [success, setSuccess] = useState(false)
 
   const summary = useMemo(() => ({
@@ -74,9 +72,7 @@ export default function CheckoutPage() {
           card: form,
         })
       })
-      const data = await res.json()
       if (res.ok) {
-        setCard(data as CardIntent)
         await fetch('/api/orders', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

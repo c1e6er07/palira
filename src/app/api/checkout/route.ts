@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabaseClient'
 
 export const revalidate = 0
 
@@ -63,4 +62,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'internal', message }, { status: 500 })
   }
 }
-

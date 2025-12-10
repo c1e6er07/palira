@@ -4,9 +4,10 @@ import { locales, defaultLocale } from "./i18n"
 export default createMiddleware({
   locales: Array.from(locales),
   defaultLocale,
-  localePrefix: "always"
+  localePrefix: "always",
 })
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"]
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 }
+

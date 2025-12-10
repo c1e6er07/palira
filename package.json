@@ -8,7 +8,9 @@
     "start": "next start -p $PORT",
     "lint": "eslint",
     "storage:upload": "node scripts/upload-storage.mjs",
-    "favicon:generate": "node scripts/generate-favicon.mjs"
+    "favicon:generate": "node scripts/generate-favicon.mjs",
+    "test": "vitest",
+    "test:ci": "vitest --run"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.87.1",
@@ -24,9 +26,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
+    "jsdom": "^27.3.0",
     "png-to-ico": "^3.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.0.15"
   }
 }
