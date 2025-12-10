@@ -8,6 +8,7 @@ services:
     rootDir: .
     buildCommand: npm install && npm run build
     startCommand: npm run start
+    healthCheckPath: /api/db/diagnostics
     autoDeploy: true
     envVars:
       - key: NODE_VERSION
