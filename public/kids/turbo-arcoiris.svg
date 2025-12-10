@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="carBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF1744;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF4081;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D500F9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="windshield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00B0FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <!-- Wheels -->
+  <circle cx="50" cy="150" r="25" fill="#212121" />
+  <circle cx="50" cy="150" r="10" fill="#EEEEEE" />
+  <circle cx="150" cy="150" r="25" fill="#212121" />
+  <circle cx="150" cy="150" r="10" fill="#EEEEEE" />
+  
+  <!-- Body -->
+  <path d="M20,140 L180,140 L170,100 L140,80 L60,80 L30,100 Z" fill="url(#carBody)" />
+  
+  <!-- Windshield -->
+  <path d="M65,85 L135,85 L160,100 L40,100 Z" fill="url(#windshield)" />
+  
+  <!-- Speed lines -->
+  <path d="M10,90 L-20,90" stroke="#00E676" stroke-width="4" stroke-linecap="round" />
+  <path d="M5,110 L-30,110" stroke="#FFD600" stroke-width="4" stroke-linecap="round" />
+  
+  <!-- Spoiler -->
+  <path d="M160,70 L180,60 L180,100" fill="#D500F9" />
+</svg>

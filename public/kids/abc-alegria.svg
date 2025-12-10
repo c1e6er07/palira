@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="blockShadow">
+      <feDropShadow dx="3" dy="3" stdDeviation="2" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Block A -->
+  <rect x="40" y="80" width="60" height="60" rx="8" fill="#FF4081" filter="url(#blockShadow)" transform="rotate(-10, 70, 110)" />
+  <text x="70" y="125" font-family="Arial, sans-serif" font-weight="bold" font-size="40" fill="white" text-anchor="middle" transform="rotate(-10, 70, 110)">A</text>
+  
+  <!-- Block B -->
+  <rect x="100" y="60" width="60" height="60" rx="8" fill="#00B0FF" filter="url(#blockShadow)" transform="rotate(5, 130, 90)" />
+  <text x="130" y="105" font-family="Arial, sans-serif" font-weight="bold" font-size="40" fill="white" text-anchor="middle" transform="rotate(5, 130, 90)">B</text>
+  
+  <!-- Block C -->
+  <rect x="80" y="120" width="60" height="60" rx="8" fill="#00E676" filter="url(#blockShadow)" transform="rotate(15, 110, 150)" />
+  <text x="110" y="165" font-family="Arial, sans-serif" font-weight="bold" font-size="40" fill="white" text-anchor="middle" transform="rotate(15, 110, 150)">C</text>
+</svg>

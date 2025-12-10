@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Palette -->
+  <path d="M20,100 C20,40 60,10 120,10 C170,10 190,50 190,100 C190,130 170,140 150,140 C130,140 130,120 110,120 C90,120 90,160 60,160 C30,160 20,130 20,100 Z" fill="#F5F5F5" filter="url(#shadow)" />
+  <circle cx="50" cy="50" r="15" fill="#FF4081" />
+  <circle cx="90" cy="40" r="15" fill="#00B0FF" />
+  <circle cx="130" cy="50" r="15" fill="#00E676" />
+  <circle cx="150" cy="90" r="15" fill="#FFD600" />
+  
+  <!-- Brush -->
+  <g transform="rotate(-45, 100, 100)">
+    <rect x="90" y="80" width="20" height="80" fill="#8D6E63" rx="5" />
+    <path d="M90,80 L110,80 L115,50 L85,50 Z" fill="#BDBDBD" />
+    <path d="M85,50 Q100,20 115,50" fill="#D500F9" />
+  </g>
+</svg>

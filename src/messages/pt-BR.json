@@ -1,0 +1,16 @@
+{
+  "home": {
+    "title": "PALIRA IMPORTS",
+    "subtitle": "Um mundo de magia, cores e diversão para os pequenos sonhadores!",
+    "cta": "Começar Aventura 🚀"
+  },
+  "nav": {
+    "products": "Produtos",
+    "cart": "Sacola Mágica",
+    "checkout": "Pagamento"
+  },
+  "product": {
+    "details": "Ver Magia",
+    "add": "Pôr na Sacola"
+  }
+}

@@ -6,10 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "storage:upload": "node scripts/upload-storage.mjs",
+    "favicon:generate": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.87.1",
     "next": "16.0.8",
+    "next-intl": "^4.5.8",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
@@ -20,6 +24,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

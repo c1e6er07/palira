@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="capeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF4081;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D500F9;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <path d="M50,150 Q40,40 100,20 Q160,40 150,150 Q100,180 50,150 Z" fill="url(#capeGradient)" filter="url(#glow)" />
+  <path d="M70,50 L130,50 L100,100 Z" fill="#FFD600" opacity="0.8" />
+  <circle cx="100" cy="20" r="15" fill="#FFD600" />
+  <path d="M100,5 L105,15 L115,15 L108,22 L110,32 L100,27 L90,32 L92,22 L85,15 L95,15 Z" fill="#FFFFFF" />
+  <circle cx="60" cy="140" r="5" fill="#FFFFFF" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="140" cy="120" r="8" fill="#FFFFFF" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+  </circle>
+</svg>

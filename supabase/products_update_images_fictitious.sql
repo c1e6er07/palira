@@ -1,0 +1,10 @@
+update products set image = 'kids/fantasia-brilhante.svg' where id = 'k1';
+update products set image = 'kids/turbo-arcoiris.svg' where id = 'k2';
+update products set image = 'kids/arte-magica.svg' where id = 'k3';
+update products set image = 'kids/luz-estrelada.svg' where id = 'k4';
+update products set image = 'kids/abc-alegria.svg' where id = 'k5';
+update products set image = 'kids/dino-fofinho.svg' where id = 'k6';
+update products set image = 'kids/mochila-heroi.svg' where id = 'k7';
+update products set image = 'kids/puzzle-arcoiris.svg' where id = 'k8';
+update products set image = 'kids/livro-encantado.svg' where id = 'k9';
+update products set image = 'kids/patins-coloridos.svg' where id = 'k10';

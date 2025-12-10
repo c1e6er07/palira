@@ -1,0 +1,10 @@
+update products set image = 'kids/k1.svg' where id = 'k1';
+update products set image = 'kids/k2.svg' where id = 'k2';
+update products set image = 'kids/k3.svg' where id = 'k3';
+update products set image = 'kids/k1.svg' where id = 'k4';
+update products set image = 'kids/k2.svg' where id = 'k5';
+update products set image = 'kids/k3.svg' where id = 'k6';
+update products set image = 'kids/k2.svg' where id = 'k7';
+update products set image = 'kids/k3.svg' where id = 'k8';
+update products set image = 'kids/k1.svg' where id = 'k9';
+update products set image = 'kids/k2.svg' where id = 'k10';
