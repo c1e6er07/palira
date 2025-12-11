@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "storage:upload": "node scripts/upload-storage.mjs",
     "favicon:generate": "node scripts/generate-favicon.mjs",
     "test": "vitest",

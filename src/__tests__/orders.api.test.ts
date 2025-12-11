@@ -18,7 +18,7 @@ describe('API /api/orders', () => {
     const req: MockReq<{ items: Array<{ id: string; title: string; price: number; qty: number }> }> = {
       json: async () => ({ items: [{ id: 'x', title: 't', price: 5, qty: 3 }] }),
     }
-    const res = await POST(req)
+    const res = await POST(req as any)
     expect(res.status).toBe(200)
     const data = await res.json()
     expect(data.persisted).toBe(false)
