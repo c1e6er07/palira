@@ -26,7 +26,7 @@ export default async function RootLayout({ children, params }: { children: React
               <div className="rounded-xl border-[2px] border-white/60 bg-white/90 p-8 shadow-md backdrop-blur-xl">
                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                   <div className="flex items-center gap-3">
-                    <Image src="/logo.svg" alt="PALIRA IMPORTS" width={48} height={48} className="rounded-xl border border-white/70 shadow-sm" />
+                    <Image src="/logo.svg" alt="PALIRA IMPORTS" width={48} height={48} sizes="48px" className="rounded-xl border border-white/70 shadow-sm" />
                     <span className="text-2xl font-black tracking-tight brand-gradient md:text-3xl">PALIRA IMPORTS</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">

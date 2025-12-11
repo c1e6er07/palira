@@ -46,7 +46,7 @@ export default function HomeBanner() {
           <div className="absolute inset-0 rounded-full blur-[80px] opacity-60 bg-[radial-gradient(circle_at_center,rgba(0,176,255,0.18),transparent_65%)]" />
 
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-float-complex">
-            <Image src="/logo.svg" alt="PALIRA IMPORTS" width={300} height={300} priority className="drop-shadow-2xl saturate-110" />
+            <Image src="/logo.svg" alt="PALIRA IMPORTS" width={300} height={300} priority sizes="(max-width: 1024px) 220px, 300px" className="drop-shadow-2xl saturate-110" />
           </div>
 
           <div className="absolute left-6 top-6 text-5xl text-[var(--brand-3)] animate-sparkle">★</div>
@@ -55,6 +55,23 @@ export default function HomeBanner() {
           <div className="absolute right-6 bottom-6 w-16 h-16 rounded-full bg-[var(--brand-5)]/40 shadow-md animate-float" />
           <div className="absolute left-1/2 -translate-x-1/2 -top-2 w-14 h-14 rounded-xl bg-[var(--brand-2)]/30 rotate-12 shadow-md animate-bounce" />
           <div className="absolute left-20 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-[var(--brand-1)]/40 rotate-6 shadow-sm animate-float" />
+        </div>
+      </div>
+
+      <div className="block lg:hidden absolute right-4 bottom-6 w-[240px] h-[240px] pointer-events-none">
+        <div className="relative w-full h-full">
+          <div className="absolute inset-0 rounded-full blur-[50px] opacity-70 bg-[radial-gradient(circle_at_center,rgba(255,64,129,0.2),transparent_60%)]" />
+          <div className="absolute inset-0 rounded-full blur-[60px] opacity-60 bg-[radial-gradient(circle_at_center,rgba(0,176,255,0.18),transparent_65%)]" />
+
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-float-complex">
+            <Image src="/logo.svg" alt="PALIRA IMPORTS" width={220} height={220} priority sizes="(max-width: 768px) 220px, 220px" className="drop-shadow-2xl saturate-110" />
+          </div>
+
+          <div className="absolute left-4 top-4 text-3xl text-[var(--brand-3)] animate-sparkle">★</div>
+          <div className="absolute right-4 top-4 text-3xl text-yellow-400 animate-bounce">☀️</div>
+          <div className="absolute left-4 bottom-4 text-3xl text-[var(--brand-4)] animate-float">🌙</div>
+          <div className="absolute right-4 bottom-4 w-10 h-10 rounded-full bg-[var(--brand-5)]/40 shadow-md animate-float" />
+          <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-10 h-10 rounded-xl bg-[var(--brand-2)]/30 rotate-12 shadow-md animate-bounce" />
         </div>
       </div>
     </section>
