@@ -27,7 +27,7 @@ export default async function RootLayout({ children, params }: { children: React
                 var p = window.location.pathname + window.location.search + window.location.hash;
                 var m = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
                 if (m && /^palira-web(2)?\.onrender\.com$/.test(h)) {
-                  window.location.replace('https://palira-mobile.onrender.com' + p);
+                  window.location.replace('https://palira-mobile2.onrender.com' + p);
                 }
               } catch (e) {}
             `}
