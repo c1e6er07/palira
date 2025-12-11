@@ -46,7 +46,7 @@ export default async function RootLayout({ children, params }: { children: React
                     <Link href={`/${locale}/produtos`} className="bubble-link">👕 Produtos</Link>
                     <Link href={`/${locale}/carrinho`} className="bubble-link">🛍️ Sacolinha</Link>
                     <Link href={`/${locale}/checkout`} className="bubble-link">✨ Pagamento</Link>
-                    <Link href={`/${locale}/admin/pedidos`} className="bubble-link">📦 Pedidos</Link>
+                    <Link href={`/${locale}/admin`} className="text-xs text-[var(--foreground)]/40 hover:text-[var(--foreground)]/60 transition-colors">Admin</Link>
                   </div>
                 </div>
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
