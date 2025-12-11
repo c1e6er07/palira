@@ -13,7 +13,7 @@ export default function ProductCard({ product }: { product: Product }) {
         
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,rgba(255,255,0,0.2),transparent)]" />
         
-        <Image src={getProductImageUrl(product.image)} alt={product.title} width={160} height={160} sizes="(max-width: 768px) 40vw, (max-width: 1024px) 30vw, 160px" className="object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 z-10" />
+        <Image src={getProductImageUrl(product.image)} alt={product.title} width={176} height={176} sizes="(max-width: 480px) 48vw, (max-width: 768px) 44vw, (max-width: 1024px) 30vw, 176px" className="object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 z-10" />
       </div>
       
       <div className="mt-4 flex-1">
