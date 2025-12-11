@@ -27,7 +27,7 @@ export default function Home() {
             <div className="h-1.5 w-20 rounded-full bg-[var(--brand-3)]"></div>
           </div>
           
-          <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-2">
             {items.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
