@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const WEB_HOST = 'palira.onrender.com'
+const WEB_HOST = 'palira-web.onrender.com'
 const MOBILE_HOST = 'palira-mobile.onrender.com'
 
 function isMobile(req: NextRequest): boolean {
@@ -23,7 +23,10 @@ export default function middleware(req: NextRequest) {
     const redirectUrl = new URL(url)
     redirectUrl.protocol = 'https'
     redirectUrl.hostname = MOBILE_HOST
-    return NextResponse.redirect(redirectUrl, 302)
+    const res = NextResponse.redirect(redirectUrl, 302)
+    res.headers.set('Vary', 'User-Agent, Sec-CH-UA-Mobile')
+    res.headers.set('x-mobile-redirect', '1')
+    return res
   }
   return NextResponse.next()
 }

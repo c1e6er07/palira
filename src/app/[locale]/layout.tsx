@@ -6,6 +6,7 @@ import KidsTheme from "@/components/KidsTheme"
 import { CartProvider } from "@/store/cart"
 import Link from "next/link"
 import Image from "next/image"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "PALIRA IMPORTS",
@@ -19,6 +20,18 @@ export default async function RootLayout({ children, params }: { children: React
     <NextIntlClientProvider locale={locale} messages={messages}>
       <CartProvider>
         <KidsTheme>
+          <Script id="mobile-redirect" strategy="afterInteractive">
+            {`
+              try {
+                var h = window.location.hostname;
+                var p = window.location.pathname + window.location.search + window.location.hash;
+                var m = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+                if (m && h === 'palira-web.onrender.com') {
+                  window.location.replace('https://palira-mobile.onrender.com' + p);
+                }
+              } catch (e) {}
+            `}
+          </Script>
           <Header />
           {children}
           <footer className="mt-24 w-full">
