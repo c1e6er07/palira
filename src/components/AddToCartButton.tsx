@@ -1,9 +1,11 @@
 'use client'
 import { useCart } from '@/store/cart'
 import type { Product } from '@/data/products'
+import { useTranslations } from 'next-intl'
 
 export default function AddToCartButton({ product, disabled }: { product: Product; disabled?: boolean }) {
   const { add } = useCart()
+  const t = useTranslations('product')
   return (
     <button
       disabled={disabled}
@@ -14,7 +16,7 @@ export default function AddToCartButton({ product, disabled }: { product: Produc
           : 'btn-primary shadow-[var(--brand-1)]/30 hover:shadow-[var(--brand-1)]/50'
       }`}
     >
-      {disabled ? 'Indisponível' : 'Adicionar ao Carrinho ✨'}
+      {disabled ? 'Indisponível' : `${t('add')} ✨`}
     </button>
   )
 }

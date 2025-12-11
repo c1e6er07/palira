@@ -20,16 +20,17 @@ export default function HomeBanner() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-1)] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--brand-1)]"></span>
           </span>
-          Novidades Mágicas
+          Lançamentos de Moda Infantil
         </div>
 
         <h2 className="max-w-3xl text-6xl font-black leading-[0.9] tracking-tight text-[var(--foreground)] md:text-8xl drop-shadow-sm">
-          <span className="brand-gradient block mb-4">Aventuras</span>
-          Inesquecíveis
+          <span className="brand-gradient block mb-4">Moda Infantil</span>
+          Cheia de Estilo
         </h2>
         
         <p className="max-w-xl text-xl font-medium text-[var(--foreground)]/80 md:text-2xl leading-relaxed">
-          Transforme cada momento em uma <span className="text-[var(--brand-1)] font-bold">festa de cores</span> e aprendizado com nossa seleção especial.
+          Roupas e acessórios para o dia a dia dos pequenos: tecidos confortáveis,
+          caimento perfeito e qualidade que acompanha cada fase.
         </p>
         
         <div className="flex flex-wrap gap-4 mt-2">

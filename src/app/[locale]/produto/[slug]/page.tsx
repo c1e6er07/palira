@@ -14,8 +14,8 @@ async function getProduct(slugOrId: string) {
   return null
 }
 
-export default async function ProdutoPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+export default async function ProdutoPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params
   const product = await getProduct(slug)
   if (!product) return notFound()
   const normalized = { id: product.id, title: product.title, price: product.price, image: product.image ?? '/file.svg', brand: product.brand, age_group: product.age_group, stock: product.stock }
@@ -25,7 +25,7 @@ export default async function ProdutoPage({ params }: { params: Promise<{ slug: 
   return (
     <div className="flex min-h-screen items-start justify-center kids-gradient-bg font-sans pb-20">
       <main className="container max-w-5xl py-12 px-6">
-        <Breadcrumbs items={[{label:'Home', href:'/pt-BR'}, {label:'Produtos', href:'/pt-BR/produtos'}, ...(product.category?[{label:product.category, href:'/pt-BR/produtos'}]:[]), {label:product.title, href:'#'}]} />
+        <Breadcrumbs items={[{label:'Home', href:`/${locale}`}, {label:'Produtos', href:`/${locale}/produtos`}, ...(product.category?[{label:product.category, href:`/${locale}/produtos`}]:[]), {label:product.title, href:'#'}]} />
         
         <div className="mt-8 grid gap-12 lg:grid-cols-2">
           {/* Image Gallery Section */}
@@ -69,6 +69,10 @@ export default async function ProdutoPage({ params }: { params: Promise<{ slug: 
                    (12 avaliações)
                  </span>
               </div>
+              <p className="mt-3 text-[var(--foreground)]/70">
+                Estilo e conforto para acompanhar cada aventura. Tecidos macios,
+                fáceis de lavar e pensados para o bem-estar dos pequenos.
+              </p>
             </div>
 
             <div className="card p-6 bg-white/60 backdrop-blur-sm border-none">
@@ -99,16 +103,16 @@ export default async function ProdutoPage({ params }: { params: Promise<{ slug: 
   )
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug } = await params
   const product = await getProduct(slug)
   if (!product) return {}
   return {
     title: `${product.title} | PALIRA IMPORTS`,
-    description: `Descubra ${product.title} com preço especial para crianças`,
+    description: `Descubra ${product.title} com qualidade, estilo e conforto para crianças`,
     openGraph: {
       title: product.title,
-      description: `Encanto e diversão: ${product.title}`
+      description: `Estilo e conforto: ${product.title}`
     }
   }
 }

@@ -28,17 +28,17 @@ export default function ProdutosPage() {
     <div className="flex min-h-screen items-start justify-center kids-gradient-bg font-sans pb-20">
       <main className="container w-full pt-28 pb-16">
         <h1 className="text-4xl font-black text-[var(--foreground)] mb-8 flex items-center gap-3">
-          <span className="text-5xl">🧸</span>
+          <span className="text-5xl">👕</span>
           Todos os Produtos
         </h1>
         
         <div className="flex flex-col gap-6">
           {/* Filters Section */}
           <div className="card p-6 bg-white/80">
-            <h3 className="text-lg font-bold text-[var(--foreground)] mb-3 flex items-center gap-2">🎯 Filtros Mágicos</h3>
+            <h3 className="text-lg font-bold text-[var(--foreground)] mb-3 flex items-center gap-2">🎯 Filtros de Moda</h3>
             
             <div className="flex flex-wrap gap-3 mb-4">
-              {['Brinquedos','Roupas','Educativo','Acessórios','Pelúcias','Jogos','Decoração'].map((c) => (
+              {['Roupas','Acessórios','Fraldas','Conforto','Calçados','Kit Bebê','Decoração'].map((c) => (
                 <button key={c} onClick={() => setCategory(category===c?null:c)} className={`bubble-link ${category===c?'bg-[var(--brand-1)] text-white border-[var(--brand-1)] shadow-lg scale-105':''}`}>
                   {c}
                 </button>
@@ -90,8 +90,8 @@ export default function ProdutosPage() {
           ) : (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">🤔</div>
-              <h3 className="text-2xl font-bold text-[var(--foreground)]">Nenhum tesouro encontrado!</h3>
-              <p className="text-[var(--foreground)]/70">Tente ajustar os filtros mágicos.</p>
+              <h3 className="text-2xl font-bold text-[var(--foreground)]">Nenhum item encontrado!</h3>
+              <p className="text-[var(--foreground)]/70">Tente ajustar os filtros.</p>
             </div>
           )}
         </div>

@@ -10,7 +10,7 @@ import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "PALIRA IMPORTS",
-  description: "E-commerce com design atrativo e tecnologias avançadas"
+  description: "Moda infantil: roupas e acessórios com conforto, estilo e qualidade"
 }
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
@@ -26,7 +26,7 @@ export default async function RootLayout({ children, params }: { children: React
                 var h = window.location.hostname;
                 var p = window.location.pathname + window.location.search + window.location.hash;
                 var m = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-                if (m && h === 'palira-web.onrender.com') {
+                if (m && /^palira-web(2)?\.onrender\.com$/.test(h)) {
                   window.location.replace('https://palira-mobile.onrender.com' + p);
                 }
               } catch (e) {}
@@ -43,8 +43,8 @@ export default async function RootLayout({ children, params }: { children: React
                     <span className="text-2xl font-black tracking-tight brand-gradient md:text-3xl">PALIRA IMPORTS</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
-                    <Link href={`/${locale}/produtos`} className="bubble-link">🧸 Produtos</Link>
-                    <Link href={`/${locale}/carrinho`} className="bubble-link">🛍️ Sacola</Link>
+                    <Link href={`/${locale}/produtos`} className="bubble-link">👕 Produtos</Link>
+                    <Link href={`/${locale}/carrinho`} className="bubble-link">🛍️ Sacolinha</Link>
                     <Link href={`/${locale}/checkout`} className="bubble-link">✨ Pagamento</Link>
                     <Link href={`/${locale}/admin/pedidos`} className="bubble-link">📦 Pedidos</Link>
                   </div>
@@ -76,7 +76,7 @@ export default async function RootLayout({ children, params }: { children: React
               </div>
               <div className="mt-6 flex items-center justify-between text-xs text-[var(--foreground)]/60">
                 <span>© {new Date().getFullYear()} PALIRA IMPORTS</span>
-                <span>Feito com ❤️ e muita magia</span>
+                <span>Feito com ❤️ e muito cuidado</span>
               </div>
             </div>
           </footer>

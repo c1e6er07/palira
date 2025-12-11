@@ -23,7 +23,7 @@ export default function Home() {
         <div id="produtos" className="container mt-48 md:mt-64 scroll-mt-32 md:scroll-mt-40 flex flex-col gap-8">
           <div className="flex flex-col items-center text-center gap-2">
             <span className="text-sm font-bold uppercase tracking-widest text-[var(--brand-2)]">Nossa Coleção</span>
-            <h2 className="text-3xl font-black text-[var(--foreground)] md:text-4xl">Brinquedos Favoritos</h2>
+            <h2 className="text-3xl font-black text-[var(--foreground)] md:text-4xl">Roupinhas e Acessórios Favoritos</h2>
             <div className="h-1.5 w-20 rounded-full bg-[var(--brand-3)]"></div>
           </div>
           

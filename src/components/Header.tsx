@@ -25,7 +25,7 @@ export default function Header() {
         
         <nav className="flex items-center gap-2 md:gap-4">
           <Link href={`/${locale}/produtos`} className="hidden rounded-full px-4 py-2 text-sm font-bold text-[var(--foreground)] transition-all hover:bg-[var(--brand-5)]/20 hover:text-[var(--brand-1)] md:block">
-            🧸 {t('products')}
+            👕 {t('products')}
           </Link>
           
           <Link href={`/${locale}/carrinho`} className="relative flex items-center gap-2 rounded-full bg-[var(--brand-2)]/10 px-4 py-2 text-sm font-bold text-[var(--brand-2)] transition-all hover:bg-[var(--brand-2)] hover:text-white group">
@@ -54,7 +54,7 @@ export default function Header() {
               <button aria-label="Fechar" onClick={() => setOpen(false)} className="rounded-full px-3 py-1 text-sm font-bold text-[var(--foreground)] transition-all hover:bg-[var(--brand-5)]/20">✕</button>
             </div>
             <div className="mt-4 flex flex-col gap-3">
-              <Link href={`/${locale}/produtos`} onClick={() => setOpen(false)} className="rounded-full px-4 py-2 text-sm font-bold text-[var(--foreground)] transition-all hover:bg-[var(--brand-5)]/20 hover:text-[var(--brand-1)]">🧸 {t('products')}</Link>
+              <Link href={`/${locale}/produtos`} onClick={() => setOpen(false)} className="rounded-full px-4 py-2 text-sm font-bold text-[var(--foreground)] transition-all hover:bg-[var(--brand-5)]/20 hover:text-[var(--brand-1)]">👕 {t('products')}</Link>
               <Link href={`/${locale}/carrinho`} onClick={() => setOpen(false)} className="rounded-full px-4 py-2 text-sm font-bold text-[var(--foreground)] transition-all hover:bg-[var(--brand-2)]/20 hover:text-[var(--brand-2)]">🛍️ {t('cart')}<span className="ml-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[var(--brand-1)] text-[10px] font-bold text-white shadow-sm">{count}</span></Link>
               <Link href={`/${locale}/checkout`} onClick={() => setOpen(false)} className="rounded-full bg-gradient-to-r from-[var(--brand-3)] to-[var(--brand-2)] px-6 py-2 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg">✨ {t('checkout')}</Link>
             </div>

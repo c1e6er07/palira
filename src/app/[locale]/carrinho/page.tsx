@@ -12,15 +12,15 @@ export default function CarrinhoPage() {
     <div className="flex min-h-screen items-start justify-center kids-gradient-bg font-sans pb-20">
       <main className="container w-full py-16">
         <h1 className="text-4xl font-black text-[var(--foreground)] mb-8 flex items-center gap-3">
-          <span className="text-5xl">🛒</span>
-          Seu Carrinho
+          <span className="text-5xl">🛍️</span>
+          Sua Sacolinha
         </h1>
         
         {items.length === 0 ? (
           <div className="card p-12 text-center flex flex-col items-center">
             <div className="text-6xl mb-4">🎈</div>
-            <p className="text-xl text-[var(--foreground)] font-medium">Seu carrinho está vazio.</p>
-            <p className="text-[var(--foreground)]/60 mt-2">Que tal adicionar alguns brinquedos mágicos?</p>
+            <p className="text-xl text-[var(--foreground)] font-medium">Sua sacolinha está vazia.</p>
+            <p className="text-[var(--foreground)]/60 mt-2">Que tal adicionar roupas e acessórios infantis?</p>
             <Link href={`/${locale}/produtos`} className="btn-primary mt-6">Explorar Loja</Link>
           </div>
         ) : (
@@ -50,7 +50,7 @@ export default function CarrinhoPage() {
               
               <div className="flex justify-end">
                 <button onClick={clear} className="text-sm text-red-400 hover:text-red-600 font-bold underline decoration-dotted">
-                  Esvaziar carrinho
+                  Esvaziar sacolinha
                 </button>
               </div>
             </div>

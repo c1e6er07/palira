@@ -156,7 +156,7 @@ export default function CheckoutPage() {
             <div className="lg:col-span-1">
               <div className="card p-6 sticky top-24">
                 <h3 className="text-lg font-bold text-[var(--foreground)] mb-4">Suporte</h3>
-                <p className="text-sm text-[var(--foreground)]/70">Dúvidas? Nosso time mágico está aqui para ajudar.</p>
+                <p className="text-sm text-[var(--foreground)]/70">Dúvidas? Nosso time está aqui para ajudar.</p>
               </div>
             </div>
           </div>
