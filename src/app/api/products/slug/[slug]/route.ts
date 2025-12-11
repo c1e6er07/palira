@@ -10,7 +10,7 @@ export async function GET(_: NextRequest, ctx: { params: Promise<{ slug: string 
     const item = mock.find((p) => p.slug === slug)
     return NextResponse.json(item ?? null, { status: item ? 200 : 404 })
   }
-  const { data, error } = await supabase.from('products').select('id,title,price,image,description,brand,age_group,stock,category,slug,created_at,rating').eq('slug', slug).limit(1).single()
+  const { data, error } = await supabase.from('products').select('*').eq('slug', slug).limit(1).single()
   if (error || !data) {
     const item = mock.find((p) => p.slug === slug)
     return NextResponse.json(item ?? null, { status: item ? 200 : 404 })

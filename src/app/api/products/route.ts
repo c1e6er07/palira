@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
     const max = req.nextUrl.searchParams.get('max')
     const age = req.nextUrl.searchParams.get('age')
     if (!supabase) return NextResponse.json(mock)
-    let query = supabase.from('products').select('id,title,price,image,description,brand,age_group,stock,category,slug,created_at,rating')
+    let query = supabase.from('products').select('*')
     if (category) {
       try {
         query = query.eq('category', category)
