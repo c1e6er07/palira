@@ -20,6 +20,9 @@ export default function middleware(req: NextRequest) {
     if (path.startsWith('/api') || path.startsWith('/_next')) {
       return NextResponse.next()
     }
+    if (path.includes('/admin') || path.includes('/marketing')) {
+      return NextResponse.next()
+    }
     const redirectUrl = new URL(url)
     redirectUrl.protocol = 'https'
     redirectUrl.hostname = MOBILE_HOST

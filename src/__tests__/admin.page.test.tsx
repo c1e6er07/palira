@@ -1,0 +1,16 @@
+// @vitest-environment jsdom
+import { describe, it, expect, vi } from 'vitest'
+vi.mock('@/lib/supabaseClient', () => ({ supabase: undefined }))
+vi.mock('next/navigation', async () => {
+  const actual = await vi.importActual('next/navigation')
+  return { ...actual, useParams: () => ({ locale: 'pt-BR' }), useRouter: () => ({ replace: vi.fn() }) }
+})
+import { render, screen } from '@testing-library/react'
+import Admin from '@/app/[locale]/admin/page'
+
+describe('Admin page', () => {
+  it('bloqueia acesso sem usuário', async () => {
+    render(<Admin />)
+    expect(await screen.findByText('Acesso restrito')).toBeTruthy()
+  })
+})

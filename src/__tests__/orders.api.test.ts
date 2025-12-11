@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 vi.mock('@/lib/supabaseClient', () => ({ supabase: undefined }))
 
 import { POST, GET } from '@/app/api/orders/route'
+import type { NextRequest } from 'next/server'
 
 type MockReq<T> = { json: () => Promise<T> }
 
@@ -18,7 +19,7 @@ describe('API /api/orders', () => {
     const req: MockReq<{ items: Array<{ id: string; title: string; price: number; qty: number }> }> = {
       json: async () => ({ items: [{ id: 'x', title: 't', price: 5, qty: 3 }] }),
     }
-    const res = await POST(req as any)
+    const res = await POST(req as unknown as NextRequest)
     expect(res.status).toBe(200)
     const data = await res.json()
     expect(data.persisted).toBe(false)
