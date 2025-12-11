@@ -1,26 +1,4 @@
-# Render Blueprint Configuration
-# Updated rootDir to '.' to fix directory mismatch
-
 services:
-  # Removing the stuck palira-web service from sync to avoid errors
-  # - type: web
-  #   name: palira-web
-  #   env: node
-  #   plan: starter
-  #   region: oregon
-  #   branch: main
-  #   rootDir: .
-  #   buildCommand: npm install && npm run build
-  #   startCommand: npm run start
-  #   healthCheckPath: /api/db/diagnostics
-  #   autoDeploy: true
-  #   envVars:
-  #     - key: NODE_VERSION
-  #       value: 20
-  #     - key: NEXT_PUBLIC_SUPABASE_URL
-  #       sync: false
-  #     - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
-  #       sync: false
 
   - type: web
     name: palira-web
@@ -41,25 +19,6 @@ services:
       - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
         sync: false
 
-  # Replacing potentially stuck palira-mobile with palira-mobile2
-  # - type: web
-  #   name: palira-mobile
-  #   env: node
-  #   plan: starter
-  #   region: oregon
-  #   branch: main
-  #   rootDir: .
-  #   buildCommand: npm install && npm run build
-  #   startCommand: npm run start
-  #   healthCheckPath: /api/db/diagnostics
-  #   autoDeploy: true
-  #   envVars:
-  #     - key: NODE_VERSION
-  #       value: 20
-  #     - key: NEXT_PUBLIC_SUPABASE_URL
-  #       sync: false
-  #     - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
-  #       sync: false
 
   - type: web
     name: palira-mobile
