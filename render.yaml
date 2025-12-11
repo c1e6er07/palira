@@ -5,7 +5,7 @@ services:
     plan: starter
     region: oregon
     branch: main
-    rootDir: .
+    rootDir: palita-imports
     buildCommand: npm install && npm run build
     startCommand: npm run start
     healthCheckPath: /api/db/diagnostics
@@ -24,7 +24,7 @@ services:
     plan: starter
     region: oregon
     branch: main
-    rootDir: .
+    rootDir: palita-imports
     buildCommand: npm install && npm run build
     startCommand: npm run start
     healthCheckPath: /api/db/diagnostics
