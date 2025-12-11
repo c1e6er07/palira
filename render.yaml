@@ -1,3 +1,6 @@
+# Render Blueprint Configuration
+# Updated rootDir to '.' to fix directory mismatch
+
 services:
   - type: web
     name: palira-web
