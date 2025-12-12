@@ -79,7 +79,7 @@ export async function POST() {
       if (error) throw error
       results.campaigns = data?.length ?? 0
     } catch (e) {
-      results.errors.push(`Campanhas: ${e instanceof Error ? e.message : 'erro'}`)
+      results.errors.push(`Campanhas: ${e instanceof Error ? e.message : JSON.stringify(e)}`)
     }
 
     // Inserir cupons
@@ -88,7 +88,7 @@ export async function POST() {
       if (error) throw error
       results.coupons = data?.length ?? 0
     } catch (e) {
-      results.errors.push(`Cupons: ${e instanceof Error ? e.message : 'erro'}`)
+      results.errors.push(`Cupons: ${e instanceof Error ? e.message : JSON.stringify(e)}`)
     }
 
     // Inserir pedidos
@@ -97,7 +97,7 @@ export async function POST() {
       if (error) throw error
       results.orders = data?.length ?? 0
     } catch (e) {
-      results.errors.push(`Pedidos: ${e instanceof Error ? e.message : 'erro'}`)
+      results.errors.push(`Pedidos: ${e instanceof Error ? e.message : JSON.stringify(e)}`)
     }
 
     // Inserir inscrições newsletter
@@ -106,7 +106,7 @@ export async function POST() {
       if (error) throw error
       results.subscriptions = data?.length ?? 0
     } catch (e) {
-      results.errors.push(`Newsletter: ${e instanceof Error ? e.message : 'erro'}`)
+      results.errors.push(`Newsletter: ${e instanceof Error ? e.message : JSON.stringify(e)}`)
     }
 
     // Inserir eventos
@@ -115,13 +115,14 @@ export async function POST() {
       if (error) throw error
       results.events = data?.length ?? 0
     } catch (e) {
-      results.errors.push(`Eventos: ${e instanceof Error ? e.message : 'erro'}`)
+      results.errors.push(`Eventos: ${e instanceof Error ? e.message : JSON.stringify(e)}`)
     }
 
     return NextResponse.json({ 
-      success: true, 
-      message: 'Dados fictícios criados com sucesso!',
-      created: results
+      success: results.errors.length === 0, 
+      message: results.errors.length === 0 ? 'Dados fictícios criados com sucesso!' : 'Alguns dados não foram criados',
+      created: results,
+      errors: results.errors.length > 0 ? results.errors : undefined
     })
   } catch (err) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 })

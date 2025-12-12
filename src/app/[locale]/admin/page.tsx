@@ -55,6 +55,7 @@ export default function Admin() {
     try {
       const res = await fetch('/api/admin/mock-data', { method: 'POST' })
       const data = await res.json()
+      console.log('Mock data response:', data)
       if (data.success) {
         setMockMessage({ type: 'success', text: `✅ Criados: ${data.created.campaigns} campanhas, ${data.created.coupons} cupons, ${data.created.orders} pedidos, ${data.created.subscriptions} inscrições, ${data.created.events} eventos` })
         await checkMockData()
@@ -62,9 +63,11 @@ export default function Admin() {
         const metricsRes = await fetch('/api/admin/metrics', { cache: 'no-store' })
         if (metricsRes.ok) setMetrics(await metricsRes.json())
       } else {
-        setMockMessage({ type: 'error', text: `❌ Erro: ${data.error}` })
+        const errMsg = data.errors ? data.errors.join(', ') : data.error
+        setMockMessage({ type: 'error', text: `❌ Erro: ${errMsg}` })
       }
     } catch (e) {
+      console.error('Mock data error:', e)
       setMockMessage({ type: 'error', text: `❌ Erro: ${e instanceof Error ? e.message : 'desconhecido'}` })
     } finally {
       setLoading(false)
