@@ -23,11 +23,11 @@ const mockCoupons = [
 ]
 
 const mockOrders = [
-  { customer_name: `${MOCK_PREFIX} Maria Silva`, customer_email: 'maria@mock.test', total: 259.80, status: 'completed', items: JSON.stringify([{ title: 'Kit Fantasia Brilhante', qty: 2, price: 129.90 }]) },
-  { customer_name: `${MOCK_PREFIX} João Santos`, customer_email: 'joao@mock.test', total: 89.90, status: 'pending', items: JSON.stringify([{ title: 'Carrinho Turbo Arco-íris', qty: 1, price: 89.90 }]) },
-  { customer_name: `${MOCK_PREFIX} Ana Costa`, customer_email: 'ana@mock.test', total: 329.60, status: 'completed', items: JSON.stringify([{ title: 'Luminária Estrelada', qty: 1, price: 149.90 }, { title: 'Blocos ABC Alegria', qty: 2, price: 79.90 }, { title: 'Kit Arte Mágica', qty: 1, price: 59.90 }]) },
-  { customer_name: `${MOCK_PREFIX} Pedro Oliveira`, customer_email: 'pedro@mock.test', total: 199.80, status: 'shipped', items: JSON.stringify([{ title: 'Pelúcia Dino Fofinho', qty: 2, price: 99.90 }]) },
-  { customer_name: `${MOCK_PREFIX} Carla Mendes`, customer_email: 'carla@mock.test', total: 119.90, status: 'completed', items: JSON.stringify([{ title: 'Mochila Super Herói', qty: 1, price: 119.90 }]) },
+  { id: 'MOCK_ORDER_001', total: 259.80, payment_method: 'card', status: 'paid', items: JSON.stringify([{ title: 'Kit Fantasia Brilhante', qty: 2, price: 129.90 }]) },
+  { id: 'MOCK_ORDER_002', total: 89.90, payment_method: 'card', status: 'paid', items: JSON.stringify([{ title: 'Carrinho Turbo Arco-íris', qty: 1, price: 89.90 }]) },
+  { id: 'MOCK_ORDER_003', total: 329.60, payment_method: 'pix', status: 'paid', items: JSON.stringify([{ title: 'Luminária Estrelada', qty: 1, price: 149.90 }, { title: 'Blocos ABC Alegria', qty: 2, price: 79.90 }]) },
+  { id: 'MOCK_ORDER_004', total: 199.80, payment_method: 'card', status: 'paid', items: JSON.stringify([{ title: 'Pelúcia Dino Fofinho', qty: 2, price: 99.90 }]) },
+  { id: 'MOCK_ORDER_005', total: 119.90, payment_method: 'card', status: 'paid', items: JSON.stringify([{ title: 'Mochila Super Herói', qty: 1, price: 119.90 }]) },
 ]
 
 const mockSubscriptions = [
@@ -166,7 +166,7 @@ export async function DELETE() {
 
     // Excluir pedidos mock
     try {
-      const { data, error } = await client.from('orders').delete().like('customer_name', `${MOCK_PREFIX}%`).select()
+      const { data, error } = await client.from('orders').delete().like('id', 'MOCK_ORDER_%').select()
       if (error) throw error
       results.orders = data?.length ?? 0
     } catch (e) {
@@ -228,7 +228,7 @@ export async function GET() {
     } catch {}
 
     try {
-      const { count } = await client.from('orders').select('id', { count: 'exact', head: true }).like('customer_name', `${MOCK_PREFIX}%`)
+      const { count } = await client.from('orders').select('id', { count: 'exact', head: true }).like('id', 'MOCK_ORDER_%')
       counts.orders = count ?? 0
     } catch {}
 
