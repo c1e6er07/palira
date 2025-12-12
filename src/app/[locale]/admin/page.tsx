@@ -16,6 +16,8 @@ export default function Admin() {
   const [coupons, setCoupons] = useState<Array<{ code: string; description?: string; discount_percent?: number; discount_value?: number; active?: boolean }>>([])
   const [newCamp, setNewCamp] = useState<{ name: string; slug: string }>({ name: '', slug: '' })
   const [newCoupon, setNewCoupon] = useState<{ code: string; discount_percent: string }>({ code: '', discount_percent: '' })
+  const [mockData, setMockData] = useState<{ hasMockData: boolean; total: number; counts: Record<string, number> } | null>(null)
+  const [mockMessage, setMockMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   type Campaign = { id: string; name: string; slug: string; status: string }
   type Coupon = { code: string; description?: string; discount_percent?: number; discount_value?: number; active?: boolean }
 
@@ -26,6 +28,11 @@ export default function Admin() {
         const u = supabase ? await supabase.auth.getUser() : { data: { user: null } }
         if (!mounted) return
         setUser(u.data.user)
+        // Verificar dados fictícios
+        try {
+          const res = await fetch('/api/admin/mock-data', { cache: 'no-store' })
+          if (res.ok) setMockData(await res.json())
+        } catch {}
       } finally {
         setReady(true)
       }
@@ -34,6 +41,58 @@ export default function Admin() {
       mounted = false
     }
   }, [])
+
+  async function checkMockData() {
+    try {
+      const res = await fetch('/api/admin/mock-data', { cache: 'no-store' })
+      if (res.ok) setMockData(await res.json())
+    } catch {}
+  }
+
+  async function createMockData() {
+    setLoading(true)
+    setMockMessage(null)
+    try {
+      const res = await fetch('/api/admin/mock-data', { method: 'POST' })
+      const data = await res.json()
+      if (data.success) {
+        setMockMessage({ type: 'success', text: `✅ Criados: ${data.created.campaigns} campanhas, ${data.created.coupons} cupons, ${data.created.orders} pedidos, ${data.created.subscriptions} inscrições, ${data.created.events} eventos` })
+        await checkMockData()
+        // Atualizar métricas
+        const metricsRes = await fetch('/api/admin/metrics', { cache: 'no-store' })
+        if (metricsRes.ok) setMetrics(await metricsRes.json())
+      } else {
+        setMockMessage({ type: 'error', text: `❌ Erro: ${data.error}` })
+      }
+    } catch (e) {
+      setMockMessage({ type: 'error', text: `❌ Erro: ${e instanceof Error ? e.message : 'desconhecido'}` })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function deleteMockData() {
+    if (!confirm('Tem certeza que deseja excluir todos os dados fictícios?')) return
+    setLoading(true)
+    setMockMessage(null)
+    try {
+      const res = await fetch('/api/admin/mock-data', { method: 'DELETE' })
+      const data = await res.json()
+      if (data.success) {
+        setMockMessage({ type: 'success', text: `🗑️ Excluídos: ${data.deleted.campaigns} campanhas, ${data.deleted.coupons} cupons, ${data.deleted.orders} pedidos, ${data.deleted.subscriptions} inscrições, ${data.deleted.events} eventos` })
+        await checkMockData()
+        // Atualizar métricas
+        const metricsRes = await fetch('/api/admin/metrics', { cache: 'no-store' })
+        if (metricsRes.ok) setMetrics(await metricsRes.json())
+      } else {
+        setMockMessage({ type: 'error', text: `❌ Erro: ${data.error}` })
+      }
+    } catch (e) {
+      setMockMessage({ type: 'error', text: `❌ Erro: ${e instanceof Error ? e.message : 'desconhecido'}` })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   if (!ready) return <div className="flex min-h-screen items-center justify-center">Carregando...</div>
   if (!user)
@@ -179,6 +238,61 @@ export default function Admin() {
               }}>Criar cupom</button>
             </div>
           </div>
+        </div>
+
+        {/* Card de Dados Fictícios para Testes */}
+        <div className="rounded-xl border-2 border-dashed border-[var(--brand-4)]/30 bg-gradient-to-br from-[var(--brand-4)]/5 to-[var(--brand-5)]/5 p-6 shadow">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🧪</span>
+              <div>
+                <h2 className="text-xl font-bold text-[var(--foreground)]">Dados Fictícios para Testes</h2>
+                <p className="text-sm text-[var(--foreground)]/60">Crie ou exclua dados de demonstração</p>
+              </div>
+            </div>
+            {mockData?.hasMockData && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-[var(--brand-4)]/20 px-3 py-1 text-xs font-bold text-[var(--brand-4)]">
+                <span className="w-2 h-2 rounded-full bg-[var(--brand-4)] animate-pulse" />
+                {mockData.total} registros mock
+              </span>
+            )}
+          </div>
+
+          {mockMessage && (
+            <div className={`mb-4 rounded-lg px-4 py-3 text-sm ${mockMessage.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+              {mockMessage.text}
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button 
+              onClick={createMockData} 
+              disabled={loading}
+              className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[var(--brand-2)] to-[var(--brand-3)] px-6 py-4 text-white font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="text-xl">✨</span>
+              <span>Criar dados fictícios</span>
+            </button>
+            
+            <button 
+              onClick={deleteMockData} 
+              disabled={loading || !mockData?.hasMockData}
+              className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-red-400 to-red-500 px-6 py-4 text-white font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="text-xl">🗑️</span>
+              <span>Excluir dados fictícios</span>
+            </button>
+          </div>
+
+          {mockData?.hasMockData && mockData.counts && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {mockData.counts.campaigns > 0 && <span className="chip">📢 {mockData.counts.campaigns} campanhas</span>}
+              {mockData.counts.coupons > 0 && <span className="chip">🎟️ {mockData.counts.coupons} cupons</span>}
+              {mockData.counts.orders > 0 && <span className="chip">📦 {mockData.counts.orders} pedidos</span>}
+              {mockData.counts.subscriptions > 0 && <span className="chip">📧 {mockData.counts.subscriptions} inscrições</span>}
+              {mockData.counts.events > 0 && <span className="chip">📊 {mockData.counts.events} eventos</span>}
+            </div>
+          )}
         </div>
 
         <div className="rounded-xl border bg-white/90 p-6 shadow">
